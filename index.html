@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Surprise ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(#ffb6c1, #ffc0cb);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    #character {
+      width: 180px;
+      animation: bounce 2s infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-30px); }
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 25px;
+      background-color: #ff4081;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e91e63;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CHARACTER IMAGE -->
+  <img id="character" src="bunny.jpg" alt="character">
+
+  <!-- BUTTON -->
+  <button onclick="startSurprise()">Click Me 🎁</button>
+
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgMusic" src="music.mp3" loop></audio>
+
+  <script>
+    function startSurprise() {
+
+      // 🎵 Play background music
+      const music = document.getElementById("bgMusic");
+      music.volume = 0.25;
+      music.play();
+
+      // 💬 Birthday message
+      const text = `
+      Happy Birthday to you,
+      Happy Birthday to you,
+      Happy Birthday to you, baby 
+      Happy Birthday to you!
+
+      I hope we celebrate your birthday together every year,
+      and from next year onwards, we always stay together.
+
+      I love you so much
+
+      Thank you for accepting my right swipe.
+      Thank you for texting me first.
+      Thank you for tolerating my mood swings during my periods.
+      Thank you for tolerating my tantrums.
+      Thank you for listening to me.
+      Thank you for loving me.
+      Thank you for everything you’ve done.
+
+      You are the best part of my 2025,
+      and I want to be with you in the coming years too.
+
+      You are the best part of my life.
+      I am very grateful to have you as my life partner,
+      and I wish that we stay together in every lifetime.
+      Happy Birthday, handsome.
+      You are the world’s best boyfriend
+      and the best thing that ever happened to me.
+
+      And I love you soooo much
+      `;
+
+      const msg = new SpeechSynthesisUtterance(text);
+
+      // 🎀 Cute baby-like voice settings
+      msg.rate = 0.8;
+      msg.pitch = 2.0;
+
+      const voices = speechSynthesis.getVoices();
+      msg.voice =
+        voices.find(v => v.name.toLowerCase().includes("female")) ||
+        voices[0];
+
+      speechSynthesis.speak(msg);
+    }
+  </script>
+
+</body>
+</html>
